@@ -29,5 +29,5 @@ while done==False:
     # Ограничить до 20 кадров в секунду
     clock.tick(20)	
 
-
+    
 pygame.quit()
