@@ -5,6 +5,7 @@ from pygame.locals import *
 import sys
 import copy
 import time
+import animation
 
 pygame.init()
 
@@ -13,11 +14,17 @@ font = pygame.font.Font(pygame.font.get_default_font(), 12)
 screen=pygame.display.set_mode(size)
 pygame.display.set_caption('I\'m PAVEEEEEEL')
 clock=pygame.time.Clock()
+am = animation.AnimationMachine()
 
-
+def on_animation():
+    am.do()
+    for i in am.getImages():
+        screen.blit(i[2], (i[0], i[1]))
 
 done = False
-    
+
+am.addAction(animation.Star(50,50, speed=0.05))
+
 while done==False:
     for event in pygame.event.get(): # User did something
             if event.type == pygame.QUIT: # If user clicked close
@@ -34,6 +41,8 @@ while done==False:
     
     	
     # ВЕСЬ КОД ДЛЯ РИСОВАНИЯ ДОЛЖЕН НАХОДИТЬСЯ ПОД ЭТИМ КОММЕНТАРИЕМ
+
+    on_animation()    
     
     # ВЕСЬ КОД ДЛЯ РИСОВАНИЯ ДОЛЖЕН НАХОДИТЬСЯ НАД ЭТИМ КОММЕНТАРИЕМ
     
