@@ -16,6 +16,12 @@ pygame.display.set_caption('I\'m PAVEEEEEEL')
 clock=pygame.time.Clock()
 am = animation.AnimationMachine()
 
+
+bg_image = pygame.image.load("img/back.jpg").convert()
+bg_image = pygame.transform.scale(bg_image, tuple(size))
+
+
+
 def on_animation():
     am.do()
     for i in am.getImages():
@@ -42,7 +48,12 @@ while done==False:
     	
     # ВЕСЬ КОД ДЛЯ РИСОВАНИЯ ДОЛЖЕН НАХОДИТЬСЯ ПОД ЭТИМ КОММЕНТАРИЕМ
 
-    on_animation()    
+    screen.blit(bg_image, [0,0])
+
+
+
+    on_animation()
+    pygame.display.flip()    
     
     # ВЕСЬ КОД ДЛЯ РИСОВАНИЯ ДОЛЖЕН НАХОДИТЬСЯ НАД ЭТИМ КОММЕНТАРИЕМ
     
